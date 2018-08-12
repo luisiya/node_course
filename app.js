@@ -1,16 +1,4 @@
-// app.js
-// models/
-// controllers/
-// routes/   (POST /users/) -> users.add, users.createActivation, users.checkEmail
-// helpers/   -> currency.convert, language.russian, data.analize
-// seeders/ -> test data
-// utils/ -> object.copyDeep, object.isEqual, date.format("DD-MM-YYYY");
-// config/
-// index.js
-// development.json
-// production.json
-// test.json
-// test/
+
 
 const http = require("http");
 const querystring = require("querystring");
@@ -31,9 +19,3 @@ const server = http.createServer({},
     });
 server.listen(8080);
 
-// http://google.com -> 192.168.1.105
-// 192.168.1.105:8080, http://google.com:8080
-// http://google.com === http://google.com:80
-
-
-// Не будет работать до тех пор

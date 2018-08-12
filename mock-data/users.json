@@ -4,9 +4,14 @@
     "password": "123",
     "books": [
       {
-        "title": "JS is suck!",
-        "author": "PHP developer"
-
+        "title": "Holiday trip around the world",
+        "author": "PHP developer",
+        "url": "Holiday-trip-around-the-world"
+      },
+      {
+        "title": "Holiday",
+        "author": "PHP developer",
+        "url": "Holiday"
       }
     ]
   },
@@ -15,8 +20,9 @@
     "password": "123",
     "books": [
       {
-        "title": "JS is suck!",
-        "author": "PHP developer"
+        "title": "The king garden",
+        "author": "PHP developer",
+        "url": "The-king-garden"
       }
     ]
   },
@@ -25,8 +31,9 @@
     "password": "123",
     "books": [
       {
-        "title": "JS is suck!",
-        "author": "PHP developer"
+        "title": "Super hero",
+        "author": "PHP developer",
+        "url": "Super-hero"
       }
     ]
   },
@@ -35,8 +42,9 @@
     "password": "123",
     "books": [
       {
-        "title": "JS is suck!",
-        "author": "PHP developer"
+        "title": "Good morning all my friends ",
+        "author": "PHP developer",
+        "url": "Good-morning-all-my-friends"
       }
     ]
   }
