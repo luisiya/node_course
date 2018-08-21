@@ -1,39 +1,39 @@
-// app.js
-// models/
-// controllers/
-// routes/   (POST /users/) -> users.add, users.createActivation, users.checkEmail
-// helpers/   -> currency.convert, language.russian, data.analize
-// seeders/ -> test data
-// utils/ -> object.copyDeep, object.isEqual, date.format("DD-MM-YYYY");
-// config/
-// index.js
-// development.json
-// production.json
-// test.json
-// test/
-
-const http = require("http");
-const querystring = require("querystring");
-// 1) Делать запросы на другие серверы (http.request);
-// 2) Обработка входящих запросов(http.createServer, .listen);
-
-const server = http.createServer({},
-    (request /* Запрос */, response /* Ответ */) => {
-        // /users/ --- POST, body = { a: 1 }
-        // response.statusCode = 201;
-        const name = querystring.parse(request.url.slice(2)).name;
-
-        request.query = querystring.parse(request.url.slice(2));
-
-        if(request.url === '/users/' && request.method === "GET"){}
-        response.end(`Hello, ${name}`);
-        // debugger;
-    });
-server.listen(8080);
-
-// http://google.com -> 192.168.1.105
-// 192.168.1.105:8080, http://google.com:8080
-// http://google.com === http://google.com:80
+const express = require("express");
+const app = express();
+const config = require("./config/development");
+const bodyParser = require('body-parser');
+const users = require("./routes/users");
+const books = require("./routes/books");
+const technologies = require("./routes/technologies");
 
 
-// Не будет работать до тех пор
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use((req, res, next) => {
+    console.log(`${req.url} --> ${req.method} --> ${Date.now()}`);
+    next();
+});
+
+
+
+app.use('/users', users);
+app.use('/books', books);
+app.use('/technologies/', technologies);
+
+
+// Not Found Error
+app.use((req, res, next) => {
+    const error = new Error("Not Found!");
+    next(error);
+});
+
+// All errors
+app.use((err, req, res, next) => {
+    res.status(500);
+    res.json({
+        error: err.message,
+        stack: err.stack
+    })
+});
+
+app.listen(config.port);
