@@ -17,8 +17,8 @@ app.use((req, res, next) => {
 
 
 app.use('/users', users);
-app.use('/books', books);
-app.use('/technologies/', technologies);
+app.use('/users/:index/books', books);
+app.use('/technologies', technologies);
 
 
 // Not Found Error
